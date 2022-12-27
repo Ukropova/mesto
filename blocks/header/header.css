@@ -1,0 +1,20 @@
+.header {
+  margin: 0 auto;
+  margin-top: 45px;
+  max-width: 880px;
+  max-height: 74px;
+  padding: 0 738px 0 0;
+}
+
+@media (max-width:1000px) {
+  .header {
+    padding-right: 439PX;
+  }
+}
+
+@media (max-width:650px) {
+  .header {
+    padding-right: 189px;
+    margin-top: 28px;
+  }
+}

@@ -1,0 +1,10 @@
+.button-close:hover{
+  cursor: pointer;
+  opacity: 0.6;
+}
+@media (max-width:650px) {
+  .button-close{
+    width: 20px;
+   
+  }
+  }

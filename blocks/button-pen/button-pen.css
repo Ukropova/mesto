@@ -1,0 +1,23 @@
+.button-pen {
+  margin: 0;
+  padding: 0;
+  background-color: #000000;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 15px;
+  right: 0;
+  border: 1px solid #FFFFFF;
+}
+
+.button-pen:hover {
+  cursor: pointer;
+  opacity: 60%;
+}
+
+@media (max-width:1000px) {
+  .button-pen {
+    width: 18px;
+    height: 18px;
+  }
+}
