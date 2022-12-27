@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mesto Russia</title>
+  <link rel="stylesheet" href="pages/index.css">
+
+
+</head>
+
+<body class="body">
+  <div class="page">
+
+    <header class="header">
+      <img class="logo" src="./image/logo.svg" alt="логотип">
+      <div class="header__line"></div>
+
+    </header>
+    <main>
+      <section class="profile">
+        <img src="./image/image (5).jpg" alt="" class="profile__avatar">
+        <div class="profile-info">
+          <h1 class="profile__title">Жак-Ив Кусто</h1>
+          <p class="profile__subtitle">Исследователь океана</p>
+          <button  class="button-pen"> <img  class="profile__Edit-button" src="./image/pen.svg" alt=""></button>
+        </div>
+
+       
+        <button class="button"> <img  class="profile__add-button"src="./image/cross.svg" alt=""></button>
+      </section>
+
+      <section class="elements">
+
+        <div class="element">
+          <img class="element__image" src="./image/dombai.png" alt="" class="image">
+          <div class="element-bottom">
+          <h2 class="element__title">Карачаевск</h2>
+          <div class="element__image-heart"></div>
+
+          <!--<img class="element__image-heart" src="./image/heart.svg" alt="сердце">-->
+        </div>
+        </div>
+        <div class="element">
+          <img class="element__image" src="./image/elbrus.png" alt="" class="image">
+          <div class="element-bottom">
+          <h2 class="element__title">Гора Эльбрус</h2>
+          <div class="element__image-heart"></div>
+          <!--<img class="element__image-heart" src="./image/heart.svg" alt="сердце">-->
+        </div>
+        </div>
+        <div class="element">
+          <img class="element__image"src="./image/karachaevsk.png" alt="" class="image">
+          <div class="element-bottom">
+          <h2 class="element__title">Домбай</h2>
+          <div class="element__image-heart"></div>
+          <!--<img class="element__image-heart" src="./image/heart.svg" alt="сердце">-->
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__image" src="./image/elbrus.png" alt="" class="image">
+          <div class="element-bottom">
+          <h2 class="element__title">Гора Эльбрус</h2>
+          <div class="element__image-heart"></div>
+          <!--<img class="element__image-heart" src="./image/heart.svg" alt="сердце">-->
+        </div>
+        </div>
+        <div class="element">
+          <img class="element__image" src="./image/karachaevsk.png" alt="" class="image">
+          <div class="element-bottom">
+          <h2 class="element__title">Домбай</h2>
+          <div class="element__image-heart"></div>
+          <!--<img class="element__image-heart" src="./image/heart.svg" alt="сердце">-->
+        </div>
+        </div>
+        <div class="element">
+          <img class="element__image" src="./image/dombai.png" alt="" class="image">
+          <div class="element-bottom">
+          <h2 class="element__title">Карачаево-Черкессия</h2>
+          <div ></div>
+          <button class="element__image-heart"></button>
+          <!--<img class="element__image-heart" src="./image/heart.svg" alt="сердце">-->
+        </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__text">© 2020 Mesto Russia</p>
+    </footer>
+
+  </div>
+
+
+ <section class="popup ">
+  <div class="popup-container">
+    <button class="popup__button-close"><img class="button-close" src="./image/Close Icon.svg" alt=""> </button>
+  <h2 class="popup__text">Редактировать профиль</h2>
+    <form class="popup__form">
+      
+      <input class="popup__field " type="text" value="Жак-Ив Кусто" name="name" >
+      <input class="popup__field " type="text" value="Исследователь океана" name="job">
+      <button class="popup__button-submit">Сохранить</button>
+
+    </form>
+    
+  </div>
+  </section>
+
+
+  <script src="./script/index.js"></script>
+</body>
+
+</html>
