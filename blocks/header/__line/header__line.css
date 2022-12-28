@@ -1,0 +1,21 @@
+.header__line {
+
+  width: 880px;
+  opacity: 70%;
+  margin: 0 auto;
+  border: 1px solid #545454;
+  margin-top: 36px;
+}
+
+@media (max-width:1000px) {
+  .header__line {
+    width: 581px;
+  }
+}
+
+@media (max-width:650px) {
+  .header__line {
+    width: 320px;
+    margin-top: 25px;
+  }
+}

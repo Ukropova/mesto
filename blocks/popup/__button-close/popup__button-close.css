@@ -1,0 +1,19 @@
+.popup__button-close {
+  min-width: 32px;
+  min-height: 32px;
+  position: absolute;
+  padding: 0;
+  top: -40px;
+  right: -40px;
+  background: #000000;
+  border: 0;
+}
+
+@media (max-width:650px) {
+  .popup__button-close {
+    top: -38px;
+    left: 220px;
+    min-width: 20px;
+    min-height: 20px;
+  }
+}
