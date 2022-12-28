@@ -16,20 +16,17 @@
 @media (max-width:1000px) {
   .page {
     max-width: 581px;
-
   }
 }
 
 @media (max-width:650px) {
   .page {
     max-width: 320px;
-
   }
 }
 
 @media (max-width:340px) {
   .page {
     margin: 0;
-
   }
 }

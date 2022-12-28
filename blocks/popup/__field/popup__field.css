@@ -14,8 +14,9 @@
 .popup__field:first-child {
   margin-bottom: 22px;
 }
+
 @media (max-width:650px) {
   .popup__field:first-child {
-  margin-bottom: 24px;
-}
+    margin-bottom: 24px;
+  }
 }
