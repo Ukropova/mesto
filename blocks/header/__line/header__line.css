@@ -2,7 +2,7 @@
   width: 880px;
   opacity: 70%;
   margin: 0 auto;
-  border: 1px solid #545454;
+  border-bottom: 1px solid rgba(84, 84, 84, 1);
   margin-top: 36px;
 }
 

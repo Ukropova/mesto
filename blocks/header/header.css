@@ -3,7 +3,8 @@
   margin-top: 45px;
   max-width: 880px;
   max-height: 74px;
-  padding: 0 738px 0 0;
+  padding: 0 738px 36px 0;
+  border-bottom: 1px solid rgba(84, 84, 84, .7);
 }
 
 @media (max-width:1000px) {
@@ -15,6 +16,7 @@
 @media (max-width:650px) {
   .header {
     padding-right: 189px;
+    padding-bottom: 26px;
     margin-top: 28px;
   }
 }
