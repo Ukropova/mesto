@@ -1,6 +1,6 @@
 .profile__button-pen {
   margin: 0;
-  padding: 5.25px;
+  padding: 5px;
   background-color: #000000;
   width: 24px;
   height: 24px;
@@ -20,7 +20,7 @@
   .profile__button-pen {
     width: 18px;
     height: 18px;
-    background-size: 7.5px 7.5px;
+    background-size: 7px 7px;
     margin-right: 19px;
   }
 }

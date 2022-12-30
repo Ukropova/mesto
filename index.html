@@ -31,43 +31,43 @@
           <img class="element__image" src="./image/dombai.png" alt="карачаевск">
           <div class="element__content">
             <h2 class="element__title">Карачаевск</h2>
-            <button class="element__image-heart" type="button"></button>
+            <button class="element__image-heart element__image-heart_active" type="button"></button>
           </div>
         </div>
         <div class="element">
           <img class="element__image" src="./image/elbrus.png" alt="эльбрус">
           <div class="element__content">
             <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="element__image-heart" type="button"></button>
+            <button class="element__image-heart element__image-heart_active" type="button"></button>
           </div>
         </div>
         <div class="element">
           <img class="element__image" src="./image/karachaevsk.png" alt="домбай">
           <div class="element__content">
             <h2 class="element__title">Домбай</h2>
-            <button class="element__image-heart" type="button"></button>
+            <button class="element__image-heart element__image-heart_active" type="button"></button>
           </div>
         </div>
         <div class="element">
           <img class="element__image" src="./image/elbrus.png" alt="эльбрус">
           <div class="element__content">
             <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="element__image-heart" type="button"></button>
+            <button class="element__image-heart element__image-heart_active" type="button"></button>
           </div>
         </div>
         <div class="element">
           <img class="element__image" src="./image/karachaevsk.png" alt="домбай">
           <div class="element__content">
             <h2 class="element__title">Домбай</h2>
-            <button class="element__image-heart" type="button"></button>
+            <button class="element__image-heart element__image-heart_active" type="button"></button>
           </div>
         </div>
         <div class="element">
           <img class="element__image" src="./image/dombai.png" alt="карачевск">
           <div class="element__content">
             <h2 class="element__title">Карачаево-Черкессия</h2>
+            <button class="element__image-heart element__image-heart_active" type="button"></button>
           </div>
-          <button class="element__image-heart"></button>
         </div>
       </section>
     </main>
@@ -75,18 +75,17 @@
       <p class="footer__text">© 2020 Mesto Russia</p>
     </footer>
   </div>
-  <section class="popup">
-    <div class="popup-container">
-      <button class="popup__button-close" type="button"><img class="button-close" src="./image/CloseIcon.svg"
-          alt="крестик"></button>
-      <h2 class="popup__text">Редактировать профиль</h2>
-      <form class="popup__form">
-        <input class="popup__field" type="text" value="Жак-Ив Кусто" name="name">
-        <input class="popup__field" type="text" value="Исследователь океана" name="job">
+  <div class="popup">
+    <div class="popup__container">
+      <button class="popup__button-close" type="button"></button>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="popup__form" name="nameForm">
+        <input class="popup__field popup__field_data_name" type="text" name="name">
+        <input class="popup__field popup__field_data_job" type="text" name="job">
         <button class="popup__button-submit" type="submit">Сохранить</button>
       </form>
     </div>
-  </section>
+  </div>
   <script src="./script/index.js"></script>
 </body>
 
