@@ -4,8 +4,8 @@
   min-height: 19px;
   background-repeat: no-repeat;
   border: 0;
-  background-color:#FFFFFF;
-  }
+  background-color: #ffff;
+}
 
 .element__image-heart:hover {
   cursor: pointer;

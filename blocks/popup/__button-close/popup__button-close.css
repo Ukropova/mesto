@@ -9,11 +9,11 @@
   background-image: url(../../../image/CloseIcon.svg);
   background-size: 32px 32px;
   background-repeat: no-repeat;
-  background-color: #000000;
+  background-color: rgba(255, 255, 255, 0);
   background-position: center;
 }
 
-.popup__button-close:hover{
+.popup__button-close:hover {
   cursor: pointer;
   opacity: 0.6;
 }
