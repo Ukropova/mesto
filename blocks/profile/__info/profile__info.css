@@ -1,16 +1,15 @@
 .profile__info {
-  display: flex;
-  flex-direction: column;
+  width: 100%;
   min-width: 336px;
-  position: relative;
   margin-top: 22px;
   box-sizing: border-box;
 }
 
 @media (max-width:1000px) {
   .profile__info {
+    width: 100%;
     min-width: 282px;
-    align-items: center;
     margin-top: 26px;
   }
 }
+
