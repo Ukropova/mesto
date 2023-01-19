@@ -27,65 +27,51 @@
         <button class="profile__add-button" type="button"></button>
       </section>
       <section class="elements">
-        <div class="element">
-          <img class="element__image" src="./image/dombai.png" alt="карачаевск">
-          <div class="element__content">
-            <h2 class="element__title">Карачаевск</h2>
-            <button class="element__image-heart" type="button"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./image/elbrus.png" alt="эльбрус">
-          <div class="element__content">
-            <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="element__image-heart" type="button"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./image/karachaevsk.png" alt="домбай">
-          <div class="element__content">
-            <h2 class="element__title">Домбай</h2>
-            <button class="element__image-heart" type="button"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./image/elbrus.png" alt="эльбрус">
-          <div class="element__content">
-            <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="element__image-heart" type="button"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./image/karachaevsk.png" alt="домбай">
-          <div class="element__content">
-            <h2 class="element__title">Домбай</h2>
-            <button class="element__image-heart" type="button"></button>
-          </div>
-        </div>
-        <div class="element">
-          <img class="element__image" src="./image/dombai.png" alt="карачевск">
-          <div class="element__content">
-            <h2 class="element__title">Карачаево-Черкессия</h2>
-            <button class="element__image-heart" type="button"></button>
-          </div>
-        </div>
       </section>
     </main>
     <footer class="footer">
       <p class="footer__text">© 2020 Mesto Russia</p>
     </footer>
   </div>
-  <div class="popup">
+  <div class="Popup_form-edit popup">
     <div class="popup__container">
-      <button class="popup__button-close" type="button"></button>
+      <button class="popup__button-close popup__button-close_form-edit" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form" name="nameForm">
+      <form class="popup__form popup__formEdit" name="nameForm">
         <input class="popup__field popup__field_data_name" type="text" name="name">
         <input class="popup__field popup__field_data_job" type="text" name="job">
-        <button class="popup__button-submit" type="submit">Сохранить</button>
+        <button class="popup__button-submit " type="submit">Сохранить</button>
       </form>
     </div>
   </div>
+  <div class="Popup_form-add popup">
+    <div class="popup__container">
+      <button class="popup__button-close popup__button-close_form-add" type="button"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <form class="popup__form " name="nameFormAdd" id="popup__formAdd">
+        <input class="popup__field popup__field_data_title" type="text" name="title" placeholder="Название">
+        <input class="popup__field popup__field_data_link" type="text" name="link" placeholder="Ссылка на картинку">
+        <button class="popup__button-submit popup__button-submit_create" type="submit">Создать</button>
+      </form>
+    </div>
+  </div>
+  <div class="popup__foto popup">
+    <div class="popup__content">
+      <button class="popup__button-close popup__button-close_foto" type="button"></button>
+      <img class="popup__image popup__image_data" src="#" alt="большая фотография">
+      <h2 class="popup__label popup__label_data"></h2>
+    </div>
+  </div>
+  <template id="element-Template">
+    <div class="element">
+      <img class="element__image" src="" alt="картинка">
+      <button class="element__image-trash element__image-trash_button" type="button"></button>
+      <div class="element__content">
+        <h2 class="element__title"></h2>
+        <button class="element__image-heart element__image-heart_button" type="button"></button>
+      </div>
+    </div>
+  </template>
   <script src="./script/index.js"></script>
 </body>
 
