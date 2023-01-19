@@ -10,7 +10,7 @@
   right: 20px;
 }
 
-.element__image-trash {
+.element__image-trash:hover {
   cursor: pointer;
   opacity: 0.6;
 }
