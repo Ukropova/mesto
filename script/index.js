@@ -1,4 +1,4 @@
-const popupElement = document.querySelector('.Popup_form-edit');
+const popupElement = document.querySelector('.Popup__form-edit');
 const openPopupElement = document.querySelector('.profile__button-pen');
 const closePopupElement = document.querySelector('.popup__button-close_form-edit');
 const form = document.querySelector('.popup__formEdit');
@@ -28,7 +28,7 @@ closePopupElement.addEventListener('click', closePopup);
 form.addEventListener('submit', getFormValu);
 
 
-const popupAddElement = document.querySelector('.Popup_form-add');
+const popupAddElement = document.querySelector('.Popup__form-add');
 const openAddPopupElement = document.querySelector('.profile__add-button');
 const dataTitle = document.querySelector('.popup__field_data_title');
 const dataLink = document.querySelector('.popup__field_data_link');
