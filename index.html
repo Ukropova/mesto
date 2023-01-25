@@ -51,6 +51,7 @@
       <form class="popup__form " name="nameFormAdd" id="popup__formAdd">
         <input class="popup__field popup__field_data_title" type="text" name="title" placeholder="Название">
         <input class="popup__field popup__field_data_link" type="text" name="link" placeholder="Ссылка на картинку">
+        <input class="popup__field popup__field_data_alt type="text" name="alt" placeholder="второе название">
         <button class="popup__button-submit popup__button-submit_create" type="submit">Создать</button>
       </form>
     </div>
@@ -64,7 +65,7 @@
   </div>
   <template id="element-template">
     <div class="element">
-      <img class="element__image" src="#" alt="картинка">
+      <img class="element__image" src="#" alt="">
       <button class="element__image-trash element__image-trash_button" type="button"></button>
       <div class="element__content">
         <h2 class="element__title"></h2>
@@ -72,6 +73,7 @@
       </div>
     </div>
   </template>
+  <cards.js src="./script/cards.js"></cards.js>
   <script src="./script/index.js"></script>
 </body>
 

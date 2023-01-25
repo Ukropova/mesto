@@ -11,12 +11,12 @@
   border-bottom: 1px solid rgba(0, 0, 0, .2);
 }
 
-.popup__field:first-child {
+.popup__field {
   margin-bottom: 22px;
 }
 
 @media (max-width:650px) {
-  .popup__field:first-child {
+  .popup__field {
     margin-bottom: 24px;
   }
 }
