@@ -2,8 +2,8 @@
 
 
 const profilePopup = document.querySelector('.popup_form-edit');
-const ButtonEdit = document.querySelector('.profile__button-pen');
-const ButtonCloseEdit = document.querySelector('.popup__button-close_form-edit');
+const buttonEdit = document.querySelector('.profile__button-pen');
+const buttonCloseEdit = document.querySelector('.popup__button-close_form-edit');
 const formEdit = document.querySelector('.popup__formEdit');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
@@ -31,33 +31,27 @@ const buttonCloseFoto = fotoPopup.querySelector('.popup__button-close_foto');
 const initialCards = [
   {
     title: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
-    alt: 'Архыз'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
   },
   {
     title: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
-    alt: 'Челябинская область'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
   },
   {
     title: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
-    alt: 'Иваново'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
   },
   {
     title: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
-    alt: 'Камчатка'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
   },
   {
     title: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
-    alt: 'Холмогорский район'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
   },
   {
     title: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
-    alt: 'Байкал'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
 
@@ -92,7 +86,7 @@ function createCart(src, title, alt) {
 
   elementImage.src = src,
   elementTitle.textContent = title,
-  elementImage.alt = alt;
+  elementImage.alt = title;
 
   openFotopopup(fotopopup);
   doLike(likeButton);
@@ -111,10 +105,9 @@ function getAddFormValue(event) {
   event.preventDefault();
   src = dataTitle.value,
   title = dataLink.value;
-  alt = dataAlt.value;
+  alt = dataLink.value;
   dataTitle.value = '';
   dataLink.value = '';
-  dataAlt.value = '';
   const newCart = createCart(title, src, alt);
   elementsContainer.prepend(newCart);
   closePopup(cardPopup);
@@ -139,13 +132,14 @@ function deleteCard(deleteButton) {
 function openFotopopup(photoEl) {
   photoEl.addEventListener('click', function (event) {
     imageData.src = event.target.src;
+    imageData.alt = event.target.closest('.element').textContent;
     labelData.textContent = event.target.closest('.element').textContent;
     openPopup(fotoPopup);
   })
 };
 
 //открытие попап редактирования
-ButtonEdit.addEventListener('click', function () {
+buttonEdit.addEventListener('click', function () {
   dataName.value = profileTitle.textContent;
   dataJob.value = profileSubtitle.textContent;
   openPopup(profilePopup);
@@ -160,7 +154,7 @@ imageData.addEventListener('click', function () {
 });
 
 //закрытие попап редактирования
-ButtonCloseEdit.addEventListener('click', function () {
+buttonCloseEdit.addEventListener('click', function () {
   closePopup(profilePopup)
 });
 //закрытие попап добавления карточки

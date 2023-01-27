@@ -9,11 +9,15 @@
   color: #000000;
   min-height: 33px;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
+  margin-bottom: 0;
+}
+
+.popup__field:first-child {
   margin-bottom: 22px;
 }
 
 @media (max-width:650px) {
-  .popup__field {
+  .popup__field:first-child {
     margin-bottom: 24px;
   }
 }
