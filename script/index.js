@@ -76,7 +76,7 @@ function getValueFormEdit(event) {
 
 
 //создание карточки из массива
-function createCart(src, title, alt) {
+function createCart(src, title) {
   const cardElement = elementTemplate.content.cloneNode(true);
   const elementTitle = cardElement.querySelector('.element__title');
   const elementImage = cardElement.querySelector('.element__image');
@@ -88,7 +88,7 @@ function createCart(src, title, alt) {
   elementTitle.textContent = title,
   elementImage.alt = title;
 
-  openFotopopup(fotopopup);
+  openFotopopup(fotopopup, src, title);
   doLike(likeButton);
   deleteCard(deleteButton);
 
@@ -96,19 +96,18 @@ function createCart(src, title, alt) {
 };
 
 initialCards.forEach((element) => {
-  elementsContainer.append(createCart(element.link, element.title, element.alt))
+  elementsContainer.append(createCart(element.link, element.title))
 });
 
 
 //создание новой карточки
 function getAddFormValue(event) {
   event.preventDefault();
-  src = dataTitle.value,
-  title = dataLink.value;
-  alt = dataLink.value;
+  src = dataLink.value,
+  title = dataTitle.value;
   dataTitle.value = '';
   dataLink.value = '';
-  const newCart = createCart(title, src, alt);
+  const newCart = createCart(src,title);
   elementsContainer.prepend(newCart);
   closePopup(cardPopup);
 };
@@ -129,11 +128,13 @@ function deleteCard(deleteButton) {
 };
 
 //открытие попап картинки
-function openFotopopup(photoEl) {
+function openFotopopup(photoEl, src, title) {
   photoEl.addEventListener('click', function (event) {
-    imageData.src = event.target.src;
-    imageData.alt = event.target.closest('.element').textContent;
-    labelData.textContent = event.target.closest('.element').textContent;
+    //debugger
+    //console.log('event.target.alt', event.target.alt.trim())
+    imageData.src = src;
+    imageData.alt = title.trim();
+    labelData.textContent = title.trim();
     openPopup(fotoPopup);
   })
 };
