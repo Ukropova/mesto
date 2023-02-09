@@ -65,6 +65,20 @@ const closePopup = function (popup) {
   popup.classList.remove('popup_opened');
 }
 
+//закрытие по фону
+function closePopupOverlay(event) {
+  if (event.target.classList.contains('popup_opened')) {
+    closePopup(event.target);
+  }
+};
+
+//закрытие по ESC
+function closePopupByEsc(event) {
+  if (event.key === "Escape") {
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
+  }
+};
 
 //редактирование данных
 function getValueFormEdit(event) {
@@ -85,8 +99,8 @@ function createCart(src, title) {
   const fotopopup = cardElement.querySelector('.element__image');
 
   elementImage.src = src,
-  elementTitle.textContent = title,
-  elementImage.alt = title;
+    elementTitle.textContent = title,
+    elementImage.alt = title;
 
   openFotopopup(fotopopup, src, title);
   doLike(likeButton);
@@ -99,7 +113,6 @@ initialCards.forEach((element) => {
   elementsContainer.append(createCart(element.link, element.title))
 });
 
-
 //создание новой карточки
 function getAddFormValue(event) {
   event.preventDefault();
@@ -107,7 +120,7 @@ function getAddFormValue(event) {
   title = dataTitle.value;
   dataTitle.value = '';
   dataLink.value = '';
-  const newCart = createCart(src,title);
+  const newCart = createCart(src, title);
   elementsContainer.prepend(newCart);
   closePopup(cardPopup);
 };
@@ -166,6 +179,15 @@ buttonCloseAdd.addEventListener('click', function () {
 buttonCloseFoto.addEventListener('click', function () {
   closePopup(fotoPopup)
 });
-
 //обработчик формы редактирования
 formEdit.addEventListener('submit', getValueFormEdit);
+//обрабочик закрытия по фону
+document.addEventListener('click', closePopupOverlay);
+//обработчик закрытия по ESC
+document.addEventListener('keydown', closePopupByEsc);
+
+
+
+
+
+

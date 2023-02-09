@@ -21,3 +21,7 @@
     margin-bottom: 24px;
   }
 }
+
+.popup__field.popup__field_type_error {
+  border-bottom: 1px solid #FF0000;
+}
