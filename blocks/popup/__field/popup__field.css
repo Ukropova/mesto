@@ -24,8 +24,8 @@
 
 @media (max-width:650px) {
   .popup__field {
-    min-height: 17px;
     padding-bottom: 5px;
+    min-height: 17px;
   }
 }
 
