@@ -6,4 +6,13 @@
   line-height: 15px;
   color: #FF0000;
   display: block;
+  margin-top: 5px;
+  min-height: 30px;
+}
+
+@media (max-width:650px) {
+  .popup__field-error {
+    line-height: 12px;
+    min-height: 24px;
+  }
 }

@@ -1,6 +1,3 @@
-
-
-
 const profilePopup = document.querySelector('.popup_form-edit');
 const buttonEdit = document.querySelector('.profile__button-pen');
 const buttonCloseEdit = document.querySelector('.popup__button-close_form-edit');
@@ -58,11 +55,13 @@ const initialCards = [
 //функция открытия попапа
 const openPopup = function (popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupByEsc);//добавление обработчика закрытия попапа по ESC
 };
 
 //функция закрытия попапа
 const closePopup = function (popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupByEsc);//удаление обработчика закрытия попапа по ESC
 }
 
 //закрытие по фону
@@ -88,7 +87,6 @@ function getValueFormEdit(event) {
   closePopup(profilePopup);
 }
 
-
 //создание карточки из массива
 function createCart(src, title) {
   const cardElement = elementTemplate.content.cloneNode(true);
@@ -99,8 +97,8 @@ function createCart(src, title) {
   const fotopopup = cardElement.querySelector('.element__image');
 
   elementImage.src = src,
-    elementTitle.textContent = title,
-    elementImage.alt = title;
+  elementTitle.textContent = title,
+  elementImage.alt = title;
 
   openFotopopup(fotopopup, src, title);
   doLike(likeButton);
@@ -143,8 +141,6 @@ function deleteCard(deleteButton) {
 //открытие попап картинки
 function openFotopopup(photoEl, src, title) {
   photoEl.addEventListener('click', function (event) {
-    //debugger
-    //console.log('event.target.alt', event.target.alt.trim())
     imageData.src = src;
     imageData.alt = title.trim();
     labelData.textContent = title.trim();
@@ -158,10 +154,15 @@ buttonEdit.addEventListener('click', function () {
   dataJob.value = profileSubtitle.textContent;
   openPopup(profilePopup);
 });
+
 //открытие попап добавления карточки
 buttonAdd.addEventListener('click', function () {
+  const buttonElement = cardPopup.querySelector('.popup__button-submit');
+  buttonElement.classList.add('popup__button-submit_inactive');
+  buttonElement.setAttribute('disabled', true);
   openPopup(cardPopup);
 });
+
 //открытие попап увелечение картинки
 imageData.addEventListener('click', function () {
   openPopup(fotoPopup);
@@ -171,23 +172,24 @@ imageData.addEventListener('click', function () {
 buttonCloseEdit.addEventListener('click', function () {
   closePopup(profilePopup)
 });
+
 //закрытие попап добавления карточки
 buttonCloseAdd.addEventListener('click', function () {
   closePopup(cardPopup)
 });
+
 //закрытие попап-картинки
 buttonCloseFoto.addEventListener('click', function () {
   closePopup(fotoPopup)
 });
+
 //обработчик формы редактирования
 formEdit.addEventListener('submit', getValueFormEdit);
+
 //обрабочик закрытия по фону
-document.addEventListener('click', closePopupOverlay);
-//обработчик закрытия по ESC
-document.addEventListener('keydown', closePopupByEsc);
-
-
-
-
+const formList = Array.from(document.querySelectorAll('.popup'));
+formList.forEach((popup) => {
+  popup.addEventListener('click', closePopupOverlay)
+});
 
 
