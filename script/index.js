@@ -1,5 +1,5 @@
-import {Card} from './card.js';
-import {FormValidator} from "./validate.js";
+import { Card } from './card.js';
+import { FormValidator } from "./validate.js";
 
 const profilePopup = document.querySelector('.popup_form-edit');
 const buttonEdit = document.querySelector('.profile__button-pen');
@@ -14,7 +14,6 @@ const cardPopup = document.querySelector('.popup_form-add');
 const buttonAdd = document.querySelector('.profile__add-button');
 const dataTitle = document.querySelector('.popup__field_data_title');
 const dataLink = document.querySelector('.popup__field_data_link');
-const dataAlt = document.querySelector('.popup__field_data_alt');
 const buttonCloseAdd = document.querySelector('.popup__button-close_form-add');
 const formAdd = document.querySelector('#popup__formAdd');
 formAdd.addEventListener('submit', getAddFormValue);
@@ -27,9 +26,6 @@ const elementsContainer = document.querySelector('.elements');
 const elementTitle = elementsContainer.querySelector('.element__title');
 
 const buttonCloseFoto = fotoPopup.querySelector('.popup__button-close_foto');
-
-
-
 
 //функция открытия попапа
 const openPopup = function (popup) {
@@ -70,13 +66,14 @@ function getValueFormEdit(event) {
 function getAddFormValue(event) {
   event.preventDefault();
   const src = dataLink.value,
-  title = dataTitle.value;
+    title = dataTitle.value;
   dataTitle.value = '';
   dataLink.value = '';
   const newCard = new Card(title, src, elementTemplate).createCard();
   elementsContainer.prepend(newCard);
   closePopup(cardPopup);
 };
+
 const initialCards = [
   {
     title: 'Архыз',
@@ -103,12 +100,14 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+//экземпляры карточек
 initialCards.forEach((element) => {
-  const card = new Card(element.title,  element.link);
+  const card = new Card(element.title, element.link, elementTemplate);
   const createdCard = card.createCard();
   document.querySelector('.elements').append(createdCard);
 });
- // enableValidation принимает обьект
+
+// enableValidation принимает обьект
 export const enableValidation = {
   formSelector: '.popup__form',
   inputSelector: '.popup__field',
@@ -118,19 +117,16 @@ export const enableValidation = {
   errorClass: 'popup__field-error_active',
 };
 
-
-const formValidator1 = new FormValidator(enableValidation,  formEdit);
-const formValidatorFormEdit =  formValidator1.enableValidation();
-
-const formValidator2 = new FormValidator(enableValidation,  formAdd);
+//экземпляры
+const formValidator1 = new FormValidator(enableValidation, formEdit);
+const formValidatorFormEdit = formValidator1.enableValidation();
+const formValidator2 = new FormValidator(enableValidation, formAdd);
 const formValidatorFormAdd = formValidator2.enableValidation();
-
-
 
 //добавление лайка
 export function doLike(likeButton) {
   likeButton.addEventListener('click', function (event) {
-   event.target.classList.toggle('element__image-heart_active');
+    event.target.classList.toggle('element__image-heart_active');
   })
 };
 
