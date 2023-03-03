@@ -23,8 +23,6 @@ const imageData = fotoPopup.querySelector('.popup__image_data');
 const labelData = fotoPopup.querySelector('.popup__label_data');
 const elementTemplate = document.querySelector('#element-template');
 const elementsContainer = document.querySelector('.elements');
-const elementTitle = elementsContainer.querySelector('.element__title');
-
 const buttonCloseFoto = fotoPopup.querySelector('.popup__button-close_foto');
 
 //функция открытия попапа
@@ -62,17 +60,7 @@ function getValueFormEdit(event) {
   closePopup(profilePopup);
 }
 
-//создание новой карточки
-function getAddFormValue(event) {
-  event.preventDefault();
-  const src = dataLink.value,
-    title = dataTitle.value;
-  dataTitle.value = '';
-  dataLink.value = '';
-  const newCard = new Card(title, src, elementTemplate).createCard();
-  elementsContainer.prepend(newCard);
-  closePopup(cardPopup);
-};
+
 
 const initialCards = [
   {
@@ -100,11 +88,30 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+
+function createCard(element) {
+  const newCard = new Card({ link: element.link, title: element.title }, elementTemplate, openFotopopup);
+  const cardElement = newCard.createCard();
+  return cardElement;
+};
+//создание новой карточки
+function getAddFormValue(event) {
+  event.preventDefault();
+  const src = dataLink.value,
+    title = dataTitle.value;
+  dataTitle.value = '';
+  dataLink.value = '';
+  //const newCard = new Card({link:src, title}, elementTemplate, openFotopopup).createCard();
+
+  elementsContainer.prepend(createCard({ link: src, title }));
+  closePopup(cardPopup);
+};
+
+
+
 //экземпляры карточек
 initialCards.forEach((element) => {
-  const card = new Card(element.title, element.link, elementTemplate);
-  const createdCard = card.createCard();
-  document.querySelector('.elements').append(createdCard);
+  elementsContainer.append(createCard(element));
 });
 
 // enableValidation принимает обьект
@@ -118,35 +125,40 @@ export const enableValidation = {
 };
 
 //экземпляры
-const formValidator1 = new FormValidator(enableValidation, formEdit);
-const formValidatorFormEdit = formValidator1.enableValidation();
-const formValidator2 = new FormValidator(enableValidation, formAdd);
-const formValidatorFormAdd = formValidator2.enableValidation();
+//const formValidator1 = new FormValidator(enableValidation, formEdit);
+const formValidatorFormEdit = new FormValidator(enableValidation, formEdit).enableValidation();
+//const formValidator2 = new FormValidator(enableValidation, formAdd);
+const formValidatorFormAdd = new FormValidator(enableValidation, formAdd).enableValidation();
 
 //добавление лайка
-export function doLike(likeButton) {
-  likeButton.addEventListener('click', function (event) {
-    event.target.classList.toggle('element__image-heart_active');
-  })
-};
+// export function doLike(likeButton) {
+//   likeButton.addEventListener('click', function (event) {
+//     event.target.classList.toggle('element__image-heart_active');
+//   })
+// };
+
+
+
+
+
 
 // удаление карточки
-export function deleteCard(deleteButton) {
-  deleteButton.addEventListener('click', function (event) {
-    const listElement = event.target.closest('.element');
-    listElement.remove();
-  })
-};
+// export function deleteCard(deleteButton) {
+//   deleteButton.addEventListener('click', function (event) {
+//     const listElement = event.target.closest('.element');
+//     listElement.remove();
+//   })
+// };
 
 //открытие попап картинки
-export function openFotopopup(photoEl, src, title) {
-  photoEl.addEventListener('click', function (event) {
-    imageData.src = src;
-    imageData.alt = title.trim();
-    labelData.textContent = title.trim();
-    openPopup(fotoPopup);
-  })
+export function openFotopopup(src, title) {
+  imageData.src = src;
+  imageData.alt = title;
+  labelData.textContent = title;
+  openPopup(fotoPopup);
 };
+
+
 
 //открытие попап редактирования
 buttonEdit.addEventListener('click', function () {
@@ -157,16 +169,13 @@ buttonEdit.addEventListener('click', function () {
 
 //открытие попап добавления карточки
 buttonAdd.addEventListener('click', function () {
-  const buttonElement = cardPopup.querySelector('.popup__button-submit');
-  buttonElement.classList.add('popup__button-submit_inactive');
-  buttonElement.setAttribute('disabled', true);
   openPopup(cardPopup);
 });
 
 //открытие попап увелечение картинки
-imageData.addEventListener('click', function () {
-  openPopup(fotoPopup);
-});
+// imageData.addEventListener('click', function () {
+//   openPopup(fotoPopup);
+// });
 
 //закрытие попап редактирования
 buttonCloseEdit.addEventListener('click', function () {
