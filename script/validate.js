@@ -3,20 +3,22 @@ export class FormValidator {
   constructor(objects, formSelector) {
     this._objects = objects;
     this._formSelector = formSelector;
+    this._inputList = Array.from(this._formSelector.querySelectorAll(this._objects.inputSelector));
+    this._buttonElement = this._formSelector.querySelector(this._objects.submitButtonSelector);
   }
   //показать класс с ошибкой
   _showInputError(inputSelector, errorMessage) {
-    const formError = this._formSelector.querySelector(`.${inputSelector.id}-error`);
+    this._formError = this._formSelector.querySelector(`.${inputSelector.id}-error`);
     inputSelector.classList.add(this._objects.inputErrorClass);
-    formError.textContent = errorMessage;
-    formError.classList.add(this._objects.errorClass);
+    this._formError.textContent = errorMessage;
+    this._formError.classList.add(this._objects.errorClass);
   };
   //удалить класс с ошибкой
   _hideInputError(inputSelector) {
-    const formError = this._formSelector.querySelector(`.${inputSelector.id}-error`);
+    this._formError = this._formSelector.querySelector(`.${inputSelector.id}-error`);
     inputSelector.classList.remove(this._objects.inputErrorClass);
-    formError.classList.remove(this._objects.errorClass);
-    formError.textContent = ' ';
+    this._formError.classList.remove(this._objects.errorClass);
+    this._formError.textContent = ' ';
   };
   //проверить правильность ввода по типу ошибки
   _checkInputValidity(inputSelector) {
@@ -28,45 +30,45 @@ export class FormValidator {
   };
   //найдем все инпуты
   _setEventListeners() {
-    const inputList = Array.from(this._formSelector.querySelectorAll(this._objects.inputSelector));
-    const buttonElement = this._formSelector.querySelector(this._objects.submitButtonSelector);
-    this._toggleButtonState(inputList, buttonElement, this._objects);
-    inputList.forEach((inputSelector) => {
+    this._toggleButtonState();
+    this._inputList.forEach((inputSelector) => {
       inputSelector.addEventListener('input', () => {
         this._checkInputValidity(inputSelector);
-        this._toggleButtonState(inputList, buttonElement, this._objects);
+        this._toggleButtonState();
       })
     })
   };
-  //поиск и перебор форм на странице
+
   enableValidation() {
-    // const formList = Array.from(document.querySelectorAll(this._objects.formSelector));
-    // formList.forEach(el => {
-    //   el.addEventListener('submit', (event) => {
-    //     event.preventDefault();
-    //   });
-    //   this._setEventListeners();
-    // })
     this._formSelector.addEventListener('submit', (event) => {
       event.preventDefault();
     });
     this._setEventListeners();
   };
   //проверка инпута на валидность
-  _hasInvalidInput(inputList) {
-    return inputList.some((inputSelector) => {
+  _hasInvalidInput() {
+    return this._inputList.some((inputSelector) => {
       return !inputSelector.validity.valid;
     })
   };
+  //очищение формы
+  resetValidation() {
+    this._toggleButtonState();// управляем кнопкой
+    this._inputList.forEach((inputSelector) => {
+      this._hideInputError(inputSelector);//
+
+    });
+  };
+
   //блокирова кнопки
-  _toggleButtonState(inputList, buttonElement) {
-    if (this._hasInvalidInput(inputList)) {
-      buttonElement.classList.add(this._objects.inactiveButtonClass);
-      buttonElement.setAttribute('disabled', true);
+  _toggleButtonState() {
+    if (this._hasInvalidInput()) {
+      this._buttonElement.classList.add(this._objects.inactiveButtonClass);
+      this._buttonElement.setAttribute('disabled', true);
     }
     else {
-      buttonElement.classList.remove(this._objects.inactiveButtonClass);
-      buttonElement.removeAttribute('disabled');
+      this._buttonElement.classList.remove(this._objects.inactiveButtonClass);
+      this._buttonElement.removeAttribute('disabled');
     }
   };
 };

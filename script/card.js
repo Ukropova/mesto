@@ -9,18 +9,18 @@ export class Card {
     this._elementTemplate = elementTemplate;
     this._element = this._getTemplate();
     this.openFotopopup = openFotopopup;
-
+    this._likeButton = this._element.querySelector('.element__image-heart_button');
+    this._basketButton = this._element.querySelector('.element__image-trash_button');
+    this._elementImage = this._element.querySelector('.element__image');
   }
 
   _getTemplate() {
-    //const cardElement = this._elementTemplate.content.cloneNode(true);
     const cardElement = this._elementTemplate.content.querySelector('.element').cloneNode(true);
     return cardElement;
   }
 
   //создание карточки из массива
   createCard() {
-    this._element = this._getTemplate();
     this._setEventListeners();
     this._element.querySelector('.element__image').src = this._link,
       this._element.querySelector('.element__title').textContent = this._title,
@@ -29,34 +29,21 @@ export class Card {
   }
 
   _doLike() {
-    this._element.querySelector('.element__image-heart_button').classList.toggle('element__image-heart_active');
+    this._likeButton.classList.toggle('element__image-heart_active');
   };
 
   _deleteCard() {
-    //this._element.querySelector('.element__image-trash_button').closest('.element');
     this._element.remove();
   };
 
   //общая функция навешивания слушателей
   _setEventListeners() {
-   // const fotopopup = this._element.querySelector('.element__image');
-    //const deleteButton = this._element.querySelector('.element__image-trash_button');
-    //openFotopopup(fotopopup, this._link, this._title);
-    //doLike(likeButton);
-    //deleteCard(deleteButton);
-
-    this._element.querySelector('.element__image-heart_button').addEventListener('click', () =>
+    this._likeButton.addEventListener('click', () =>
       this._doLike());
-    this._element.querySelector('.element__image-trash_button').addEventListener('click', () =>
+    this._basketButton.addEventListener('click', () =>
       this._deleteCard());
-
-
-      this._element.querySelector('.element__image').addEventListener('click', () =>
+    this._elementImage.addEventListener('click', () =>
       this.openFotopopup(this._link, this._title))
-
-
-
-
   };
 };
 

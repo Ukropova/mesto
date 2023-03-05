@@ -25,6 +25,8 @@ const elementTemplate = document.querySelector('#element-template');
 const elementsContainer = document.querySelector('.elements');
 const buttonCloseFoto = fotoPopup.querySelector('.popup__button-close_foto');
 
+const formList = Array.from(document.querySelectorAll('.popup'));
+
 //функция открытия попапа
 const openPopup = function (popup) {
   popup.classList.add('popup_opened');
@@ -60,8 +62,6 @@ function getValueFormEdit(event) {
   closePopup(profilePopup);
 }
 
-
-
 const initialCards = [
   {
     title: 'Архыз',
@@ -88,26 +88,22 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-
+//создание карточки
 function createCard(element) {
   const newCard = new Card({ link: element.link, title: element.title }, elementTemplate, openFotopopup);
   const cardElement = newCard.createCard();
   return cardElement;
 };
-//создание новой карточки
+//создание  карточки пользователем
 function getAddFormValue(event) {
   event.preventDefault();
   const src = dataLink.value,
     title = dataTitle.value;
   dataTitle.value = '';
   dataLink.value = '';
-  //const newCard = new Card({link:src, title}, elementTemplate, openFotopopup).createCard();
-
   elementsContainer.prepend(createCard({ link: src, title }));
   closePopup(cardPopup);
 };
-
-
 
 //экземпляры карточек
 initialCards.forEach((element) => {
@@ -124,31 +120,10 @@ export const enableValidation = {
   errorClass: 'popup__field-error_active',
 };
 
-//экземпляры
-//const formValidator1 = new FormValidator(enableValidation, formEdit);
+//экземпляры форм
 const formValidatorFormEdit = new FormValidator(enableValidation, formEdit).enableValidation();
-//const formValidator2 = new FormValidator(enableValidation, formAdd);
-const formValidatorFormAdd = new FormValidator(enableValidation, formAdd).enableValidation();
-
-//добавление лайка
-// export function doLike(likeButton) {
-//   likeButton.addEventListener('click', function (event) {
-//     event.target.classList.toggle('element__image-heart_active');
-//   })
-// };
-
-
-
-
-
-
-// удаление карточки
-// export function deleteCard(deleteButton) {
-//   deleteButton.addEventListener('click', function (event) {
-//     const listElement = event.target.closest('.element');
-//     listElement.remove();
-//   })
-// };
+const formValidatorFormAdd = new FormValidator(enableValidation, formAdd);
+formValidatorFormAdd.enableValidation();
 
 //открытие попап картинки
 export function openFotopopup(src, title) {
@@ -157,8 +132,6 @@ export function openFotopopup(src, title) {
   labelData.textContent = title;
   openPopup(fotoPopup);
 };
-
-
 
 //открытие попап редактирования
 buttonEdit.addEventListener('click', function () {
@@ -170,12 +143,8 @@ buttonEdit.addEventListener('click', function () {
 //открытие попап добавления карточки
 buttonAdd.addEventListener('click', function () {
   openPopup(cardPopup);
+  formValidatorFormAdd.resetValidation();
 });
-
-//открытие попап увелечение картинки
-// imageData.addEventListener('click', function () {
-//   openPopup(fotoPopup);
-// });
 
 //закрытие попап редактирования
 buttonCloseEdit.addEventListener('click', function () {
@@ -196,7 +165,7 @@ buttonCloseFoto.addEventListener('click', function () {
 formEdit.addEventListener('submit', getValueFormEdit);
 
 //обрабочик закрытия по фону
-const formList = Array.from(document.querySelectorAll('.popup'));
+
 formList.forEach((popup) => {
   popup.addEventListener('click', closePopupOverlay)
 });
